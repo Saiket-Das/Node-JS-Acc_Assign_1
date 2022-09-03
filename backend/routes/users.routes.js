@@ -10,7 +10,7 @@ router
      * @api {get} /random - A random user
      * @apiDescription Get any random user 
      
-     * @apiSucess {Object[]} Random user's 
+     * @apiSucess {Object} Random user's information
      **/
     .route('/random').get(userControllers.randomUser)
 
@@ -27,7 +27,7 @@ router
 
 router
     /** 
-     * @api {save} /save - Save a user 
+     * @api {post} /save - Save a user 
      * @apiDescription Save a user 
      
      * @apiSucess {Object[]}  All the users
@@ -37,11 +37,20 @@ router
 
 router
     /** 
-     * @api {save} /save - Save a user 
-     * @apiDescription Save a user 
+     * @api {pacth} /update - Update a user's information
+     * @apiDescription Update a user's information
      
-     * @apiSucess {Object[]}  All the users
+     * @apiSucess {Object}  User's information
      **/
     .route('/update').patch(userControllers.updateUser)
+
+router
+    /** 
+     * @api {delete} /update - Delete a user
+     * @apiDescription Delete a user 
+     
+     * @apiSucess {Object[]}  New users 
+     **/
+    .route('/delete').delete(userControllers.deleteUser)
 
 module.exports = router;

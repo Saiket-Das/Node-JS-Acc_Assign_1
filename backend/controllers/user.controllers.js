@@ -1,3 +1,4 @@
+const e = require("express");
 let users = require("../../users.json")
 
 
@@ -53,7 +54,7 @@ module.exports.saveUser = (req, res) => {
 }
 
 
-
+// --------- Update a user's information
 module.exports.updateUser = (req, res) => {
     const { Id, gender, name, contact, address, photoUrl } = req.body;
 
@@ -80,6 +81,23 @@ module.exports.updateUser = (req, res) => {
         }
 
         res.send(newData)
+    }
+
+    else {
+    }
+}
+
+
+// --------- Delete a user
+module.exports.deleteUser = (req, res) => {
+    const { Id } = req.body;
+    const validUser = users.find(user => user.Id === Id);
+    if (validUser) {
+        users = users.filter(user => user.Id !== Id)
+        res.status(200).send({
+            success: true,
+            data: users
+        })
     }
 
     else {
