@@ -1,5 +1,7 @@
 let users = require("../../users.json")
 
+
+// --------- Get a random user 
 module.exports.randomUser = (req, res) => {
     const randomNum = Math.floor(Math.random() * (users.length - 1 + 1) + 1)
     const user = users.find(user => user.Id === randomNum);
@@ -9,6 +11,8 @@ module.exports.randomUser = (req, res) => {
     })
 }
 
+
+// --------- Get all users
 module.exports.getAllUser = (req, res) => {
     const { limit } = req.query;
 
@@ -19,6 +23,7 @@ module.exports.getAllUser = (req, res) => {
 }
 
 
+// --------- Save a user 
 module.exports.saveUser = (req, res) => {
     const { Id, gender, name, contact, address, photoUrl } = req.body
 
@@ -44,5 +49,40 @@ module.exports.saveUser = (req, res) => {
     else {
         users.push(req.body);
         res.send(users)
+    }
+}
+
+
+
+module.exports.updateUser = (req, res) => {
+    const { Id, gender, name, contact, address, photoUrl } = req.body;
+
+    const newData = users.find(user => user.Id === Id);
+
+    if (newData) {
+        if (gender) {
+            newData.gender = gender
+        }
+
+        if (name) {
+            newData.name = name
+        }
+
+        if (contact) {
+            newData.contact = contact
+        }
+
+        if (address) {
+            newData.address = address
+        }
+        if (photoUrl) {
+            newData.photoUrl = photoUrl
+        }
+
+        res.send(newData)
+    }
+
+    else {
+        res.send('Your provided Id is not valid')
     }
 }
