@@ -25,6 +25,14 @@ router
     .route('/all').get(userControllers.getAllUser)
 
 
+router
+    /** 
+     * @api {get} /all - All users 
+     * @apiDescription get All users 
+     
+     * @apiSucess {Object[]}  All the users
+     **/
+    .route('/save').post(userControllers.saveUser)
 
 
 module.exports = router;
