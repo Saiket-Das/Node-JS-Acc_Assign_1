@@ -7,34 +7,24 @@ const router = express.Router();
 
 router
     /** 
-     * @api {get} /user - All users 
-     * @apiDescription get All users 
+     * @api {get} /random - Random user
+     * @apiDescription get Any random user 
      
-     * @apiSucess {Object[]}  All the users
+     * @apiSucess {Object[]} random user
      **/
-    .route('/random')
-    .get(userControllers.getAllUser)
+    .route('/random').get(userControllers.randomUser)
 
 
 router
     /** 
-     * @api {get} /user - All users 
+     * @api {get} /all - All users 
      * @apiDescription get All users 
      
      * @apiSucess {Object[]}  All the users
      **/
-    .route('/all')
-    .get(userControllers.getAllUser)
+    .route('/all').get(userControllers.getAllUser)
 
 
-router.route('/all').get(userControllers.getAllUser)
-
-
-
-// router.route('/:id')
-//     .get(userControllers.getSpecificUser)
-//     .patch(userControllers.updateUser)
-//     .delete(userControllers.deleteUser)
 
 
 module.exports = router;
