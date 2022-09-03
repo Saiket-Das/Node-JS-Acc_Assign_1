@@ -46,7 +46,17 @@ router
 
 router
     /** 
-     * @api {delete} /update - Delete a user
+     * @api {pacth} /update - Update a user's information
+     * @apiDescription Update a user's information
+     
+     * @apiSucess {Object}  User's information
+     **/
+    .route('/bulk-update').patch(userControllers.updateMulitpleUser)
+
+
+router
+    /** 
+     * @api {delete} /delete - Delete a user
      * @apiDescription Delete a user 
      
      * @apiSucess {Object[]}  New users 

@@ -1,4 +1,3 @@
-const e = require("express");
 let users = require("../../users.json")
 
 
@@ -84,7 +83,49 @@ module.exports.updateUser = (req, res) => {
     }
 
     else {
+        res.send('Your provided Id is not valid')
     }
+}
+
+
+// --------- Update multiple user's information
+module.exports.updateMulitpleUser = (req, res) => {
+    req.body.filter(data => {
+        const validUser = users.find(user => user.Id === data.Id)
+
+        const { Id, gender, name, contact, address, photoUrl } = data
+        console.log({ Id, gender, name, contact, address, photoUrl });
+
+        if (validUser) {
+            if (gender) {
+                validUser.gender = gender
+            }
+
+            if (name) {
+                validUser.name = name
+            }
+
+            if (contact) {
+                validUser.contact = contact
+            }
+
+            if (address) {
+                validUser.address = address
+            }
+            if (photoUrl) {
+                validUser.photoUrl = photoUrl
+            }
+
+        }
+
+        else {
+            res.send('Your provided Id is not valid')
+        }
+    })
+    res.send(users)
+
+
+
 }
 
 
