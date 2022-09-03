@@ -5,24 +5,29 @@ const router = express.Router();
 
 
 
-router.route('/')
-
+router
     /** 
-       * @api {get} /user - All users 
-       * @apiDescription get All users 
-       * @apiPermission Admin
-       * 
-       * @apiHeader {strinf} Authorization - User's access token 
-       * @apiParam {Number(1-0)}  Individual users
-       * 
-       * @apiSucess {Object[]}  All the users
-       * 
-       * @apiError {Unauthorization 401} Unauthorized      Only Authenticated Users can access the data. 
-       * @apiError {Forbidden 403} Forbidden      Only Admin users can access the data
-    **/
+     * @api {get} /user - All users 
+     * @apiDescription get All users 
+     
+     * @apiSucess {Object[]}  All the users
+     **/
+    .route('/random')
     .get(userControllers.getAllUser)
 
-//     .post(userControllers.addNewUser)
+
+router
+    /** 
+     * @api {get} /user - All users 
+     * @apiDescription get All users 
+     
+     * @apiSucess {Object[]}  All the users
+     **/
+    .route('/all')
+    .get(userControllers.getAllUser)
+
+
+router.route('/all').get(userControllers.getAllUser)
 
 
 

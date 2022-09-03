@@ -13,11 +13,11 @@ app.use(express.json());
 
 
 
-app.use("/api/users", userRoute)
+app.use("/api/user", userRoute)
 
 
 app.get('/', (req, res) => {
-    res.send('Manufacturer Blackmagic!')
+    res.send('ACC Asignment ONE!')
 })
 
 
